@@ -1,17 +1,17 @@
-name: hapifyMe Automated Tests
+name: HapifyMe Automated Tests
 
 # Când să ruleze robotul?
 on:
-push:
-  branches: [ "main" ] # La fiecare push pe master
-pull_request:
-  branches: [ "main" ] # La fiecare Pull Request
+   push:
+     branches: [ "main" ] # La fiecare push pe master
+   pull_request:
+     branches: [ "main" ] # La fiecare Pull Request
 
 jobs:
-test-execution:
-  runs-on: ubuntu-latest # Sistemul de operare al robotului
+  test-api:
+    runs-on: ubuntu-latest # Sistemul de operare al robotului
 
-  steps:
+    steps:
     # Pasul 1: Descarcă codul nostru din repo (v4)
     - name: Checkout Code
       uses: actions/checkout@v4
