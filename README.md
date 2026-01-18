@@ -3,19 +3,13 @@ ProiectFinal-hapifyme
 Repository-ul GitHub conține un framework de testare automatizată dezvoltat pentru aplicația https://test.hapifyme.com
 
 Framework-ul este bazat pe: 
-Maven / Gradle pentru managementul dependențelor și rularea testelor
-RestAssured pentru testarea API-urilor
-Selenide pentru testarea interfeței web
+Maven / Gradle pentru managementul dependențelor și rularea testelor, RestAssured pentru testarea API-urilor, Selenide pentru testarea interfeței web
 
-Proiectul include integrare Continuous Integration (CI) prin GitHub Actions, configurată în fișierul:
-.github/workflows/test.yml
+Proiectul include integrare Continuous Integration (CI) prin GitHub Actions, configurată în fișierul: .github/workflows/test.yml
 
-Workflow-ul rulează automat testele la:
-push
-pull request
+Workflow-ul rulează automat testele la: push & pull request
 
-Pipeline-ul:
-instalează mediul necesar (Java + Maven/Gradle)
+Pipeline-ul: instalează mediul necesar (Java + Maven/Gradle)
 rulează testele automat
 
 Pentru a rula testele local, este necesar:
