@@ -1,0 +1,57 @@
+name: hapifyMe Automated Tests
+
+# Când să ruleze robotul?
+on:
+push:
+  branches: [ "main" ] # La fiecare push pe master
+pull_request:
+  branches: [ "main" ] # La fiecare Pull Request
+
+jobs:
+test-execution:
+  runs-on: ubuntu-latest # Sistemul de operare al robotului
+
+  steps:
+    # Pasul 1: Descarcă codul nostru din repo (v4)
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Pasul 2: Instalează Java 21 (v4)
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: 'maven' # Cache la dependențe pentru viteză
+
+    # Pasul 3: Rulează testele folosind Maven (Profile-ul pentru HapfyMe)
+    - name: Run Tests with Maven
+      run: mvn -B test --file pom.xml
+
+    # Pasul 4: Configurarea Artefactelor (Raportul de Testare)
+    - name: Upload Test Report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: target/surefire-reports
+
+    # Pasul 5: Configurarea Accesului
+    - name: Run Tests
+      run: mvn test -Dapi.token=${{ secrets.HAPIFYME_TOKEN }}
+
+
+    # Pasul 6: Generarea și publicarea Raportului Allure
+    - name: Generate Allure Report
+      uses: simple-elf/allure-report-action@master
+      if: always()
+      with:
+        allure_results: target/allure-results
+        allure_report: allure-report
+
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: allure-report
+        path: allure-report
