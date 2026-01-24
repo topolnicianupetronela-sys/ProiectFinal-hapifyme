@@ -1,72 +1,125 @@
-ProiectFinal – HapifyMe
+Proiect Final HapifyMe 
+ 
+ 
 
-Descriere
+This repository is part of my QA Automation portfolio and showcases my skills in: 
 
-Acest repository GitHub conține un framework de testare automatizată dezvoltat pentru aplicația web HapifyMe, disponibilă la:
-https://test.hapifyme.com
+🔹 designing and implementing an automated testing framework 
 
-Framework-ul este conceput pentru testarea atât a API-urilor, cât și a interfeței web, având ca obiectiv validarea funcționalităților principale ale aplicației și identificarea rapidă a defectelor.
+🔹 API and UI test automation 
 
-Tehnologii utilizate
+🔹 integrating automated tests into a CI pipeline 
 
-Proiectul este construit folosind următoarele tehnologii și tool-uri:
 
-Maven / Gradle – managementul dependențelor și rularea testelor
+The application under test is HapifyMe, available in the test environment at: 
+🔗 https://test.hapifyme.com 
 
-RestAssured – testarea serviciilor REST (API)
+ 
 
-Selenide – testarea interfeței web (UI)
+Project Purpose 
 
-Java – limbajul principal de implementare
+The main goal of this project is to demonstrate: 
 
-Continuous Integration (CI)
+🔹 solid understanding of end-to-end automated testing concepts 
 
-Proiectul include integrare Continuous Integration (CI) prin GitHub Actions, configurată în fișierul:
+🔹 practical usage of modern QA Automation tools 
 
-.github/workflows/test.yml
+🔹 ability to identify, reproduce, and document real defects 
 
-Workflow CI
+🔹 automated test execution within a Continuous Integration (CI) setup 
 
-Workflow-ul este declanșat automat la:
+ 
 
-push
+Test Coverage 
 
-pull request
+The framework covers the following types of testing: 
 
-Pipeline-ul CI:
+🔹 API Testing 
+Validation of REST endpoints using RestAssured 
 
-Instalează mediul necesar (Java + Maven/Gradle)
+🔹 UI Testing 
+Automation of web interface tests using Selenide 
 
-Rulează automat suitele de teste
+ 
 
-Rulare locală
+ Technologies & Tools 
 
-Pentru a rula testele local, sunt necesare următoarele:
+Java – primary programming language 
 
-Java instalat
+Maven  – dependency management and test execution 
 
-Maven sau Gradle (în funcție de configurația proiectului)
+RestAssured – REST API testing 
 
-Comandă de rulare
-mvn test
+Selenide – UI test automation 
 
+GitHub Actions – Continuous Integration (CI) 
+
+ 
+
+Continuous Integration (CI) 
+
+The project includes an automated CI pipeline configured with GitHub Actions. 
+
+📁 Workflow configuration: 
+
+.github/workflows/test.yml 
+ 
+
+Pipeline triggers: 
+
+🔹 push 
+
+🔹 pull request 
+
+Pipeline steps: 
+
+🔹 sets up the required environment (Java + Maven) 
+
+🔹 executes all automated test suites 
+
+🔹 validates application stability 
+
+ 
+
+Running Tests Locally 
+
+Prerequisites: 
+
+Java installed 
+
+Maven or Gradle (depending on project configuration) 
+
+Run command: 
+
+mvn test 
+ 
 
 <img width="1880" height="833" alt="Screenshot 2026-01-18 184457" src="https://github.com/user-attachments/assets/0c0b82f4-5704-4115-8ffe-6e0c362f76fd" />
+ 
+
+Example of Identified Bug (API Testing) 
+
+Description 
+
+During automated API testing, a defect was identified in the Update Profile endpoint, where the last character of the first_name field is truncated. 
+
+ 
+
+Expected Result 
+
+The get_profile.php endpoint should return the exact value sent during the update request: 
+
+"first_name": "Updated_Georgeanna Gutmann" 
+ 
 
 
-Bug identificat – API Update Profile
+Actual Result 
 
-Descriere: Endpoint-ul de actualizare a profilului trunchiază ultimul caracter din câmpul first_name.
+The backend modifies the first_name value: 
 
-Rezultat așteptat:
+"first_name": "Updated_Georgeanna Gutman" 
 
-Câmpul first_name returnat de endpoint-ul get_profile.php trebuie să fie identic cu valoarea trimisă la actualizare: "first_name": "Updated_Georgeanna Gutmann"
-
-
-Rezultat actual:
-
-Valoarea first_name este modificată de backend: "first_name": "Updated_Georgeanna Gutman"
-
+ 
 
 <img width="1233" height="702" alt="Screenshot 2026-01-17 204711" src="https://github.com/user-attachments/assets/e3908e95-0a89-4d57-b50b-71ee270c3d8c" />
 
